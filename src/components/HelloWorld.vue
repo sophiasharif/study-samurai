@@ -8,19 +8,13 @@
     <div>
       <h2>Calculus Problem:</h2>
       <p>{{ problem }}</p>
-      <button @click="generateProblem">Generate New Problem</button>
+      <button @click="test">Generate New Problem</button>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
-const client = axios.create({
-  headers: {
-    Authorization: "Bearer " + process.env.VUE_APP_OPENAI_API_KEY,
-  },
-});
+import generateChatGPTResponse from "@/composables/generateChatGPTResponse"
 
 export default {
   name: "HelloWorld",
@@ -33,24 +27,9 @@ export default {
     };
   },
   methods: {
-    async generateProblem() {
-      const params = {
-        prompt:
-          "I don't understand the following problem: Let f(u, v) = tan(uv3). Find the partial derivatives fu(u, v) and fv(u, v). What math concepts is it testing and what am I missing? Give me 3 more practice problems to test my understanding.",
-        model: "text-davinci-003",
-        max_tokens: 1000,
-        temperature: 0.7,
-      };
-
-      try {
-        const result = await client.post(
-          "https://api.openai.com/v1/completions",
-          params
-        );
-        this.problem = result.data.choices[0].text;
-      } catch (error) {
-        console.error(error);
-      }
+    async test() {
+      let res = await generateChatGPTResponse("Tell my a really funny joke!");
+      this.problem = res;
     },
   },
 };
