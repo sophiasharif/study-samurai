@@ -17,10 +17,6 @@
 import generateChatGPTResponse from "@/composables/generateChatGPTResponse"
 
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
   data() {
     return {
       problem: "",
@@ -28,14 +24,13 @@ export default {
   },
   methods: {
     async test() {
-      let res = await generateChatGPTResponse("Tell my a really funny joke!");
+      let res = await generateChatGPTResponse("Tell me a funny story");
       this.problem = res;
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
