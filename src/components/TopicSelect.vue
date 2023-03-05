@@ -1,8 +1,14 @@
 <template>
     <div>
+      <div class="dropdown">
+  <button class="dropbtn">Topics</button>
+  <div class="dropdown-content">
+  <a href="#" v-for="topic in topics" :key="topic.id" class="topics" :value="topic.name">{{ topic.name }}</a>
+  </div>
+</div>
       <select v-model="selectedTopic" @change="handleTopicChange">
         <option value="">-- Select a Topic --</option>
-        <option v-for="topic in topics" :key="topic.id" :value="topic.name">{{ topic.name }}</option>
+        <option v-for="topic in topics" :key="topic.id" class="topics" :value="topic.name">{{ topic.name }}</option>
         <option value="custom">Custom</option>
       </select>
       <div v-if="showCustomInput">
@@ -76,6 +82,14 @@
   
   <style>
   .selected-topic {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    padding: 5px 10px;
+    border: 3px solid #4b3a3a;
+    border-radius: 5px;
+    background-color: #382870;
+  }
+  .topics {
     display: inline-block;
     margin: 0 10px 10px 0;
     padding: 5px 10px;
