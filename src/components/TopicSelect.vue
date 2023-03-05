@@ -3,7 +3,7 @@
       <div class="dropdown">
   <button class="dropbtn">Topics</button>
   <div class="dropdown-content">
-  <a href="#" v-for="topic in topics" :key="topic.id" class="topics" :value="topic.name">{{ topic.name }}</a>
+  <a href="link" v-for="topic in topics" :key="topic.id" class="topics" :value="topic.name" @click="getSelectedTopics">{{ topic.name }}</a>
   </div>
 </div>
       <select v-model="selectedTopic" @change="handleTopicChange">
