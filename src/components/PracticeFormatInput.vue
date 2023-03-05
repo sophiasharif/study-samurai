@@ -6,6 +6,7 @@
         <input type="text" ref="time" v-model="numTime" @input="updateTime" @click="selectTime">
         <button @click="incrementTime">+</button>
         <button @click="decrementTime">-</button>
+        <button ref="generateButton" @click="$emit('generate-test',this.getNumProblem(), this.getNumTime())">Generate</button>
     </div>
 </template>
 
@@ -21,10 +22,10 @@ export default{
     },
     methods: {
         increment(){
-            this.numProblems = (parseInt(this.numProblems.split(' ').at(0)) + 1) + ' Problems';
+            this.numProblems = (this.getNumProblem()+1) + ' Problems';
         },
         decrement(){
-            this.numProblems = (Math.max(1, parseInt(this.numProblems.split(' ').at(0)) - 1)) + ' Problems';
+            this.numProblems = (Math.max(1, this.getNumProblem() - 1)) + ' Problems';
         },updateValue(event) {
             const input = event.target.value;
             if (isNaN(input)) {
@@ -37,12 +38,16 @@ export default{
         },selectAll() {
             this.$refs.prob.select();
         },
-        
+        getNumTime(){
+            return parseInt(this.numTime.split(' ').at(0));
+        },getNumProblem(){
+            return parseInt(this.numProblems.split(' ').at(0));
+        },
         incrementTime(){
-            this.numTime = (parseInt(this.numTime.split(' ').at(0)) + 15) + ' Minutes';
+            this.numTime = (parseInt(this.getNumTime() + 15) + ' Minutes');
         },
         decrementTime(){
-            this.numTime = (Math.max(15, parseInt(this.numTime.split(' ').at(0)) - 15)) + ' Minutes';
+            this.numTime = (Math.max(15, this.getNumTime() - 15)) + ' Minutes';
         },updateTime(event) {
             const input = event.target.value;
             if (isNaN(input)) {
@@ -55,7 +60,7 @@ export default{
         },selectTime() {
             this.$refs.time.select();
         }
-    }
+    },emits: ['generate-test']
 }
 </script>
 
