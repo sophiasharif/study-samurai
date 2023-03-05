@@ -1,17 +1,13 @@
 <template>
-    <div>
-      <p>Here's some inline LaTeX: $$e^{i\pi}+1=0$$</p>
+  <div>
+      We can define the integral of a function with bounded support:
+      <math-jax latex="\frac{x^2}{a^2}-\frac{y^2}{b^2}=1"></math-jax>
       <p>Here's a block of LaTeX:</p>
-      <div class="mathjax">
-        $$
-        \begin{align*}
-        f(x) &= (x+a)(x+b) \\
-             &= x^2 + (a+b)x + ab
-        \end{align*}
-        $$
+      <div>
+        <math-jax :latex=formula :block="true"></math-jax>
       </div>
-    </div>
-  </template>
+  </div>
+</template>
   
 <style>
   .mathjax {
@@ -19,18 +15,17 @@
   }
 </style>
 
-<!--
+
 <script>
-import MathJax from 'mathjax';
+import { MathJax } from 'mathjax-vue3'
 export default {
-  methods: {
-    renderMathJax() {
-      MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-    }
+  data(){
+    return{
+      formula: "\\begin{align} \\int_a^b f(x), dx \\end{align}"
+    };
   },
-  mounted() {
-    this.renderMathJax();
+  components: {
+    MathJax
   }
 }
 </script>
--->
