@@ -13,6 +13,24 @@ body {
   overflow: hidden;
 }
 
+h1 {
+  font-size: 48px;
+}
+
+h3 {
+  font-size: 24px;
+  color: var(--lightPurple);
+}
+
+p, h5 {
+  color: var(--lightPurple);
+}
+
+h2 {
+  margin: 0px;
+  font-size: 26px;
+}
+
 .button {
   padding: 8px 20px;
   background-color: var(--darkPurple);
@@ -22,4 +40,9 @@ body {
   font-weight: bold;
   font-size: 14px;
   text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }

@@ -1,11 +1,20 @@
 <template>
   <nav>
-    <router-link to="/">home</router-link>
-    <router-link to="/exam-prep">exam prep</router-link>
-    <router-link to="/topic-practice">topic practice</router-link>
-    <router-link to="/check-work">check work</router-link>
-    <router-link to="/login" class="button">LOGIN</router-link>
-  </nav>
+    <router-link to="/" id="logo-div">
+      <img id="logo-img" src="@/assets/katana.svg" />
+      <div id="logo-text">
+        <h4>study samurAI</h4>
+        <h5>with your good pal sam!</h5>
+      </div>
+    </router-link>
+    <div id="page-links">
+      <router-link to="/">home</router-link>
+      <router-link to="/exam-prep">exam prep</router-link>
+      <router-link to="/topic-practice">topic practice</router-link>
+      <router-link to="/check-work">check work</router-link>
+      <router-link to="/login" class="button">LOGIN</router-link>
+    </div>
+</nav>
   <router-view />
   <div id="smallBlob" class="blob"></div>
   <div id="mediumBlob" class="blob" width=60px height=80px></div>
@@ -23,19 +32,48 @@
 
   nav {
     display: flex;
+    justify-content: space-between;
+  }
+
+  #logo-div {
+    display: flex;
+    align-items: center;
+  }
+
+  #logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  #logo-text h4 {
+    font-size: 22px;
+    margin: 5px 0px;
+  }
+
+  #logo-text h5 {
+    margin: 0px;
+  }
+
+  #logo-img {
+    width: 40px;
+    justify-self: start;
+    margin: 0px 15px;
+  }
+
+  #page-links {
+    display: flex;
     padding: 30px;
     justify-content: flex-end;
     align-items: center;
   }
 
-  nav a {
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
+  #page-links a {
     margin: 10px 20px;
   }
 
-  nav a.router-link-exact-active {
+  #page-links a.router-link-exact-active {
     color: var(--lightPurple);
   }
 
@@ -47,8 +85,8 @@
   }
 
   #smallBlob {
-    left: 120px;
-    top: 130px;
+    left: 300px;
+    top: 260px;
     width: 45px;
     height: 50px;
   }
@@ -69,7 +107,7 @@
 
   #largeBlob2 {
     left: 1050px;
-    top: 650px;
+    top: 680px;
     width: 600px;
     height: 500px;
   }

@@ -4,11 +4,11 @@
         <h1>hello hello,</h1>
         <h3>i'm sam!</h3>
       </div>
-      <img src="@/assets/sam.svg" />
+      <img id="sam-img" src="@/assets/sam.svg" />
     </div>
     <form>
       <h2>what would you like to do today?</h2>
-      <div class="radioChoices">
+      <div class="radio-choices">
         <label>
           <input @click="setLink('/topic-practice')" type="radio" id="topic" name="choice" value="topicPractice" checked="checked">
           <span class="selection"></span>
@@ -61,26 +61,8 @@
     margin-left: -100px;
   }
 
-  img {
+  #sam-img {
     width: 150px;
-  }
-
-  h1 {
-    font-size: 48px;
-  }
-
-  h3 {
-    font-size: 24px;
-    color: var(--lightPurple);
-  }
-
-  p {
-    color: var(--lightPurple);
-  }
-
-  h2 {
-    margin: 0px;
-    font-size: 26px;
   }
 
   form {
@@ -89,7 +71,7 @@
     margin: 60px;
   }
 
-  .radioChoices {
+  .radio-choices {
     width: 300px;
     display: flex;
     flex-direction: column;
