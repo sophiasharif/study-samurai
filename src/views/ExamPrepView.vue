@@ -5,17 +5,6 @@
     <practice-format-input @generate-test="handleGenerate"></practice-format-input>
     <problem-response v-if="this.isGenerated" ref="practice"></problem-response>
   </div>
-  <div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-  <a href="#">Linear Algebra</a>
-  <a href="#">Analysis</a>
-  <a href="#">Multivariable Differentiation</a>
-  <a href="#">Multivariable Integration</a>
-  <a href="#">Integrability</a>
-  <a href="#">Change of Variables</a>
-  </div>
-</div>
 </template>
 
 <script>
