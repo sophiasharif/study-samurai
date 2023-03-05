@@ -25,12 +25,12 @@
         selectedTopic: '',
         customTopic: '',
         topics: [
-          { id: 1, name: 'Mathematics' },
-          { id: 2, name: 'Science' },
-          { id: 3, name: 'History' },
-          { id: 4, name: 'Geography' },
-          { id: 5, name: 'English' },
-          { id: 6, name: 'Computer Science' }
+          { id: 1, name: 'Linear Algebra' },
+          { id: 2, name: 'Analysis' },
+          { id: 3, name: 'Multivariable Differentiation' },
+          { id: 4, name: 'Multivariable Integration' },
+          { id: 5, name: 'Integrability' },
+          { id: 6, name: 'Change of Variables' }
         ],
         showCustomInput: false,
         selectedTopics: []
