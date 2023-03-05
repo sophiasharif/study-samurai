@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <img
-      src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Samurai_with_sword.jpg"
+      src="@/assets/Sam.svg"
       alt=""
     />
     <h1>EL STUDY SAMUR.AI</h1>
