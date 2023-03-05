@@ -39,7 +39,7 @@ export default {
 /* add any custom styles here */
 .dropbtn {
   background-color: #926bc9;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -54,7 +54,7 @@ export default {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #f9f9f900;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -67,7 +67,7 @@ export default {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {background-color: #f1f1f100}
 
 .dropdown:hover .dropdown-content {
   display: block;
