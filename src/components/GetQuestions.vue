@@ -2,29 +2,38 @@
   <div>
     <h3>Question:</h3>
     <p>{{ question }}</p>
-    <h3>Solution:</h3>
+    <h3>Correct Answer:</h3>
+    <p>{{ correctAnswer }}</p>
+    <h3>ChatGPT's Solution:</h3>
     <p>{{ answer }}</p>
-    <h3>Explanation:</h3>
-    <p>{{ explanation }}</p>
+    <h3>Incorrect answer:</h3>
+    <p>{{ incorrectAnswer }}</p>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { getQuestionsBySubtopic } from "@/composables/firebaseFunctions";
-import { generateCorrectAnswer } from "@/composables/chatGPTFunctions"
+import { generateCorrectAnswer, generateMultipleIncorrectAnswers, generateIncorrectAnswer } from "@/composables/chatGPTFunctions"
 
 const question = ref("");
+const correctAnswer = ref("waiting for firebase...");
 const answer = ref("waiting for chatGPT response...");
+const incorrectAnswer = ref("generating incorrect answers...");
 
+let questionObject = {}
 
-getQuestionsBySubtopic("dot product properties")
+getQuestionsBySubtopic("orthogonality")
   .then((res) => {
     console.log(res);
-    const questionObject = res[0];
-    question.value = questionObject.question;
+    questionObject = res[0];
+    question.value = questionObject.question
+    correctAnswer.value = questionObject.answer;
 
-    generateCorrectAnswer(question.value).then(res => answer.value = res)
+    console.log(questionObject)
+    generateCorrectAnswer(questionObject.question).then(res => answer.value = res)
+    generateMultipleIncorrectAnswers(questionObject.question, questionObject.answer, 3).then(res => incorrectAnswer.value = res)
+    // generateIncorrectAnswer(questionObject.question, questionObject.answer, ['12', '1']).then(res => incorrectAnswer.value = res)
   })
 </script>
 
