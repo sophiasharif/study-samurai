@@ -29,8 +29,8 @@ export default {
   data(){
     return{
       formula: "\\begin{align} \\int_a^b f(x), dx \\end{align}",
-      textArray: ['Lorem ipsum ', ' dolor sit amet ', ' consectetur adipiscing elit '],
-      equationsArray: ['\\frac{1}{2}x + 3y = 7', 'e^{i\\pi} + 1 = 0', 'a^2 + b^2 = c^2'],
+      textArray: [],
+      equationsArray: [],
       beginWithEquation : false
     };
   },
