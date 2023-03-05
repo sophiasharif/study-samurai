@@ -1,44 +1,31 @@
 <template>
   <div>
-    <ul>
-      <li v-for="t in textbookSections" :key="t.id">
-        <p>{{ t }}</p>
-      </li>
-    </ul>
-    <ul>
-      <li v-for="question in questions" :key="question.id">
-        <h3>Subtopic: {{ question.subtopic }}</h3>
-        <p>Question: {{ question.question }}</p>
-        <p>Ansewr: {{ question.answer }}</p>
-      </li>
-    </ul>
+    <h3>Question:</h3>
+    <p>{{ question }}</p>
+    <h3>Solution:</h3>
+    <p>{{ answer }}</p>
+    <h3>Explanation:</h3>
+    <p>{{ explanation }}</p>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import { getQuestionsBySubtopic } from "@/composables/firebaseFunctions";
+import { generateCorrectAnswer } from "@/composables/chatGPTFunctions"
 
-import { db } from "../firebase/config";
-import { collection, getDocs, where, query } from "firebase/firestore";
-import {getSubtopicsInUnit, getQuestionsBySubtopic} from '@/composables/firebaseFunctions'
+const question = ref("");
+const answer = ref("waiting for chatGPT response...");
 
-const questionsColRef = collection(db, "questions");
-const questions = ref([]);
 
-getDocs(questionsColRef).then((snapshot) => {
-  let docs = [];
-  snapshot.docs.forEach((doc) => {
-    docs.push({ ...doc.data(), id: doc.id });
-  });
-  questions.value = docs;
-});
+getQuestionsBySubtopic("dot product properties")
+  .then((res) => {
+    console.log(res);
+    const questionObject = res[0];
+    question.value = questionObject.question;
 
-console.log(await getQuestionsBySubtopic("orthogonality"))
-
-const textbookSections = ref([]);
-// getSubtopicsInUnit(1).then(res => {
-//   textbookSections.value = res;
-// })
+    generateCorrectAnswer(question.value).then(res => answer.value = res)
+  })
 </script>
 
 <style scoped></style>

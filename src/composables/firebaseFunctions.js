@@ -23,4 +23,15 @@ async function getQuestionsBySubtopic(subtopic) {
     return res;
 }
 
+// const questionsColRef = collection(db, "questions");
+// const questions = ref([]);
+
+// getDocs(questionsColRef).then((snapshot) => {
+//   let docs = [];
+//   snapshot.docs.forEach((doc) => {
+//     docs.push({ ...doc.data(), id: doc.id });
+//   });
+//   questions.value = docs;
+// });
+
 export { getSubtopicsInUnit, getQuestionsBySubtopic }
