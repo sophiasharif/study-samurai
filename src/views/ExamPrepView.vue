@@ -4,7 +4,12 @@
     <test-topics></test-topics>
     <practice-format-input @generate-test="handleGenerate"></practice-format-input>
     <problem-response :description="'$\\int_a^b f(x), dx$ denotes the integral from $a$ to $b$'" v-if="this.isGenerated" ref="practice"></problem-response>
+    <p v-if="this.isGenerated">Type in your answer: {{ message }}</p>
+    <input v-model="message" v-if="this.isGenerated" placeholder="your input" />
   </div>
+  
+
+
 </template>
 
 <script>
