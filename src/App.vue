@@ -84,11 +84,22 @@
     z-index: -1;
   }
 
+  @keyframes animateCW {
+    from {
+      -webkit-transform: rotate(0deg) translateX(5px) rotate(0deg);
+    }
+
+    to {
+      -webkit-transform: rotate(360deg) translateX(5px) rotate(-360deg);
+    }
+  }
+
   #smallBlob {
     left: 300px;
     top: 260px;
     width: 45px;
     height: 50px;
+    animation: animateCCW 12s linear infinite;
   }
 
   #mediumBlob {
@@ -96,6 +107,7 @@
     top: 170px;
     width: 150px;
     height: 180px;
+    animation: animateCW 16s linear infinite;
   }
 
   #largeBlob1 {
@@ -103,6 +115,7 @@
     top: 550px;
     width: 500px;
     height: 400px;
+    animation: animateCW 30s linear infinite;
   }
 
   #largeBlob2 {
@@ -110,5 +123,16 @@
     top: 680px;
     width: 600px;
     height: 500px;
+    animation: animateCCW 40s linear infinite;
+  }
+
+  @keyframes animateCCW {
+    from {
+      -webkit-transform: rotate(0deg) translateX(5px) rotate(0deg);
+    }
+
+    to {
+      -webkit-transform: rotate(-360deg) translateX(5px) rotate(360deg);
+    }
   }
 </style>
