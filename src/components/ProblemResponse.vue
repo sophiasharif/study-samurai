@@ -31,6 +31,7 @@ export default {
       formula: "\\begin{align} \\int_a^b f(x), dx \\end{align}",
       textArray: ['Lorem ipsum ', ' dolor sit amet ', ' consectetur adipiscing elit '],
       equationsArray: ['\\frac{1}{2}x + 3y = 7', 'e^{i\\pi} + 1 = 0', 'a^2 + b^2 = c^2'],
+      beginWithEquation : false
     };
   },
   components: {
@@ -42,8 +43,13 @@ export default {
     }
   },methods: {
     splitProblem(){
-      blocks = this.description.split('$');
+      const pattern = /(\$.*?\$)/g; // regex pattern to match LaTeX equations
+      const parts = this.description.split(pattern); // split the description string
+      this.textArray = parts.filter((part) => !part.match(pattern)); // filter out equations
+      this.equationsArray = parts.filter((part) => part.match(pattern)).map((eq) => eq.slice(1, -1)); // filter out text
     }
+  },created(){
+    this.splitProblem();
   }
 }
 </script>

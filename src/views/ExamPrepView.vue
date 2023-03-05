@@ -3,7 +3,7 @@
     <h1>Exam Prep</h1>
     <test-topics></test-topics>
     <practice-format-input @generate-test="handleGenerate"></practice-format-input>
-    <problem-response v-if="this.isGenerated" ref="practice"></problem-response>
+    <problem-response :description="'$\\int_a^b f(x), dx$ denotes the integral from $a$ to $b$'" v-if="this.isGenerated" ref="practice"></problem-response>
   </div>
   <div class="dropdown">
   <button class="dropbtn">Dropdown</button>
@@ -22,7 +22,6 @@
 import TestTopics from '@/components/TopicSelect.vue'
 import PracticeFormatInput from '@/components/PracticeFormatInput.vue'
 import ProblemResponse from '@/components/ProblemResponse.vue'
-import TextMath from '@/components/TextAndMath.vue';
 
 export default {
   data(){
@@ -34,7 +33,6 @@ export default {
     TestTopics,
     PracticeFormatInput,
     ProblemResponse,
-    TextMath
   }, methods:{
     handleGenerate(numProblems, numTime){
       console.log(numTime + "-minute problem set generated with" + numProblems + " problems");
