@@ -11,7 +11,7 @@
         <div class="bottom">
           <span class="clear"></span>
           <div id="submitButton">
-            <a href="#">Register</a>
+            <a href="" class="button" @click="jumpRegister()">Register</a>
           </div>
         </div>
       </div>
