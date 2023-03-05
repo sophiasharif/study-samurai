@@ -22,7 +22,6 @@ export default async function generateChatGPTResponse(prompt, tokens=500, temper
     },
   });
 
-  console.log("running function");
   const params = {
     prompt: prompt,
     model: "text-davinci-003",
