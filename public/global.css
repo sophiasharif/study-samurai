@@ -1,0 +1,23 @@
+:root {
+  --darkPurple: #351c75;
+  --mediumPurple: #5e4798;
+  --lightPurple: #d9d2e9;
+}
+
+body {
+  background-color: var(--mediumPurple);
+  color: white;
+  justify-content: center;
+  padding: 0px 50px;
+  font-weight: bold;
+}
+
+.button {
+  padding: 8px 20px;
+  background-color: var(--darkPurple);
+  border-radius: 16px;
+  color: white;
+  border-width: 0;
+  font-weight: bold;
+  font-size: 13px;
+}

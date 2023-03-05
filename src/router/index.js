@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ExamPrepView from '../views/ExamPrepView.vue'
 import TopicPracticeView from '../views/TopicPracticeView.vue'
 import CheckWorkView from '../views/CheckWorkView.vue'
+import LoginView from '../views/LoginView.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/check-work',
     name: 'check work',
     component: CheckWorkView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
   },
 ]
 

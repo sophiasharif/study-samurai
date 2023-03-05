@@ -79,9 +79,9 @@
     display: inline-block;
     margin: 0 10px 10px 0;
     padding: 5px 10px;
-    border: 1px solid #ccc;
+    border: 3px solid #4b3a3a;
     border-radius: 5px;
-    background-color: #f5f5f5;
+    background-color: #382870;
   }
   </style>
   

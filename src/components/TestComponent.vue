@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <img
-      src="@/assets/Sam.svg"
+      src="@/assets/sam.svg"
       alt=""
     />
     <h1>EL STUDY SAMUR.AI</h1>

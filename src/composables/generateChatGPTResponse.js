@@ -28,7 +28,7 @@ export default async function generateChatGPTResponse(prompt, tokens=500, temper
     max_tokens: tokens,
     temperature: temperature,
   };
-
+  
   try {
     const result = await client.post(
       "https://api.openai.com/v1/completions",
