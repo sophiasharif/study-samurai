@@ -18,7 +18,7 @@ Make sure to inlude "await" before the function call since the API query happens
 export default async function generateChatGPTResponse(prompt, tokens=500, temperature=.75) {
   const client = axios.create({
     headers: {
-      Authorization: "Bearer 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",
+      Authorization: "Bearer "+process.env.VUE_APP_OPENAI_API_KEY,
     },
   });
 
