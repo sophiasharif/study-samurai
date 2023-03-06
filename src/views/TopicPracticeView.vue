@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Topic Practice</h1>
+    <!--
     <select name="Topics" id="button">
       <option value="">-- Select a Topic --</option>
       <option
@@ -11,8 +12,10 @@
       >
         {{ topic.name }}
       </option>
+    
       <option value="custom">Custom</option>
     </select>
+    -->
     <button @click="generateQuestion">Generate Question</button>
     <div v-if="questionLoaded">
       <Suspense>
@@ -21,7 +24,7 @@
       </Suspense>
     </div>
   </div>
-  <topic></topic>
+  <topic @generateTopic="updateQuestionSpec"></topic>
 </template>
 
 <script setup>
@@ -33,13 +36,7 @@ import topic from '@/components/SubTopicSelect.vue'
 const question = ref({});
 const questionLoaded = ref(false);
 const subunit = ref(null);
-const unit = ref(null);
-
-getQuestionsBySubtopic("orthogonality").then((res) => {
-  question.value = res[0];
-  questionLoaded.value = true;
-});
-
+const unit = ref('1');
 
 function generateQuestion() {
   if (subunit.value) {
@@ -55,6 +52,11 @@ function generateQuestion() {
       questionLoaded.value = true;
     });
   }
+}
+function updateQuestionSpec(unitNumber, selectedSubtopic) {
+  console.log("updated");
+  subunit.value = selectedSubtopic;
+  unit.value = unitNumber;
 }
 </script>
 

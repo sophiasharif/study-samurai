@@ -1,13 +1,13 @@
 <template>
   <div>
     <label for="section-dropdown">Section:</label>
-    <select id="section-dropdown" v-model="selectedSection" @input="updateUnit">
+    <select id="section-dropdown" v-model="selectedSection" @change="$emit('generateTopic',this.unitNumber,this.selectedSubtopic)">
       <option value="">Select a section</option>
       <option v-for="section in sections" :value="section">{{ section }}</option>
     </select>
 
     <label for="subtopic-dropdown" v-if="selectedSection">Subtopic:</label>
-    <select id="subtopic-dropdown" v-if="selectedSection" v-model="selectedSubtopic">
+    <select id="subtopic-dropdown" v-if="selectedSection" v-model="selectedSubtopic" @change="$emit('generateTopic',this.unitNumber,this.selectedSubtopic)">
       <option value="">Random</option>
       <option v-for="subtopic in subtopics[selectedSection]" :value="subtopic">{{ subtopic }}</option>
     </select>
@@ -44,6 +44,6 @@ export default {
         }
         this.unitNumber = -1;
     }
-  }
+  },emits: ['generateTopic']
 };
 </script>
