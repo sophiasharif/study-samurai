@@ -78,19 +78,19 @@
   }
 
   .blob {
-    position: absolute; /* specify position! */
+    position: absolute;
     background-color: white;
-    border-radius: 10px; /* probably will want this to be dynamic */
+    border-radius: 10px;
     z-index: -1;
   }
 
   @keyframes animateCW {
     from {
-      -webkit-transform: rotate(0deg) translateX(5px) rotate(0deg);
+      -webkit-transform: rotate(0deg) translateX(10px) rotate(0deg);
     }
 
     to {
-      -webkit-transform: rotate(360deg) translateX(5px) rotate(-360deg);
+      -webkit-transform: rotate(360deg) translateX(10px) rotate(-360deg);
     }
   }
 
@@ -115,24 +115,24 @@
     top: 550px;
     width: 500px;
     height: 400px;
-    animation: animateCW 30s linear infinite;
+    animation: animateCW 10s linear infinite;
   }
 
   #largeBlob2 {
     left: 1050px;
-    top: 680px;
+    top: 690px;
     width: 600px;
     height: 500px;
-    animation: animateCCW 40s linear infinite;
+    animation: animateCCW 12s linear infinite;
   }
 
   @keyframes animateCCW {
     from {
-      -webkit-transform: rotate(0deg) translateX(5px) rotate(0deg);
+      -webkit-transform: rotate(0deg) translateX(10px) rotate(0deg);
     }
 
     to {
-      -webkit-transform: rotate(-360deg) translateX(5px) rotate(360deg);
+      -webkit-transform: rotate(-360deg) translateX(10px) rotate(360deg);
     }
   }
 </style>

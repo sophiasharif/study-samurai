@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ question }}</h2>
+    <ProblemResponse :description="question"></ProblemResponse>
     <ul>
       <li v-for="(answer, index) in answers" :key="index">
         <input
@@ -9,16 +9,17 @@
           :value="answer"
           v-model="userAnswer"
         />
-        <label :for="'answer-' + index">{{ answer }}</label>
+        <ProblemResponse :for="'answer-' + index" :description="answer"></ProblemResponse>
+        <!--<label :for="'answer-' + index">{{ answer }}</label>-->
       </li>
     </ul>
     <button @click="checkAnswer">Submit</button>
     <div v-if="isAnswered">
       <p v-if="isCorrect">Correct!</p>
       <div v-else>
-        <p>Incorrect! The correct answer is {{ correctAnswer }}.</p>
+        <p>Incorrect! The correct answer is <ProblemResponse :description="correctAnswer"></ProblemResponse>.</p>
         <div v-if="explanation">
-            {{ explanation }}
+            <ProblemResponse :description="explanation"/>
         </div>
         <div v-else>
             generating feedback...
@@ -30,6 +31,7 @@
 
 <script>
 import { generateMultipleIncorrectAnswers, generateIncorrectAnswerExplanation } from '@/composables/chatGPTFunctions';
+import ProblemResponse from './ProblemResponse.vue';
 
 export default {
   props: ["questionObject"],
@@ -65,7 +67,9 @@ export default {
         })
       }
     },
-  },
+  },components:{
+    ProblemResponse
+  }
 };
 </script>
 
