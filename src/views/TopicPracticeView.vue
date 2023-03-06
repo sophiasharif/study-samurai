@@ -1,12 +1,14 @@
 <template>
   <div>
-    <h1>Topic Practice</h1>
-    <topic @generateTopic="updateQuestionSpec"></topic>
-    <button @click="generateQuestion">Generate Question</button>
+    <h1>topic practice</h1>
+    <div id="dropdown-div">
+      <topic @generateTopic="updateQuestionSpec"></topic>
+      <button @click="generateQuestion" class="button">GENERATE</button>
+    </div>
     <div v-if="questionLoaded">
       <Suspense>
         <MultipleChoiceQuestion :questionObject="question" />
-        <template #fallback> Generating a practice question... </template>
+        <template #fallback> generating a practice question... </template>
       </Suspense>
     </div>
   </div>
@@ -45,4 +47,13 @@ function updateQuestionSpec(unitNumber, selectedSubtopic) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+  topic {
+    margin: 20px;
+  }
+
+  #dropdown-div {
+    display: inline;
+    padding: 20px;
+  }
+</style>

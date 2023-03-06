@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <label for="section-dropdown">Section:</label>
+  <div id="dropdown-div">
+    <label for="section-dropdown">section:</label>
     <select id="section-dropdown" v-model="selectedSection" @change="$emit('generateTopic',this.unitNumber,this.selectedSubtopic)">
       <option value="">Select a section</option>
       <option v-for="section in sections" :value="section">{{ section }}</option>
     </select>
 
-    <label for="subtopic-dropdown" v-if="selectedSection">Subtopic:</label>
+    <label for="subtopic-dropdown" v-if="selectedSection">subtopic:</label>
     <select id="subtopic-dropdown" v-if="selectedSection" v-model="selectedSubtopic" @change="$emit('generateTopic',this.unitNumber,this.selectedSubtopic)">
       <option value="">Random</option>
       <option v-for="subtopic in subtopics[selectedSection]" :value="subtopic">{{ subtopic }}</option>
@@ -47,3 +47,13 @@ export default {
   },emits: ['generateTopic']
 };
 </script>
+
+<style scoped>
+  #dropdown-div {
+    padding: 20px;
+  }
+
+  label {
+    margin: 20px;
+  }
+</style>

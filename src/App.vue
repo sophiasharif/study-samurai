@@ -103,8 +103,8 @@
   }
 
   #mediumBlob {
-    left: 1050px;
-    top: 190px;
+    left: 1060px;
+    top: 200px;
     width: 150px;
     height: 180px;
     animation: animateCW 16s linear infinite;
@@ -119,7 +119,7 @@
   }
 
   #largeBlob2 {
-    left: 950px;
+    left: 900px;
     top: 690px;
     width: 600px;
     height: 500px;
