@@ -1,30 +1,15 @@
 <template>
   <div>
     <h1>Topic Practice</h1>
-    <!--
-    <select name="Topics" id="button">
-      <option value="">-- Select a Topic --</option>
-      <option
-        v-for="topic in topic"
-        :key="topic.id"
-        class="topics"
-        :value="topic.name"
-      >
-        {{ topic.name }}
-      </option>
-    
-      <option value="custom">Custom</option>
-    </select>
-    -->
-    <button @click="generateQuestion">Generate Question</button>
+    <topic @generateTopic="updateQuestionSpec"></topic>
     <div v-if="questionLoaded">
       <Suspense>
         <MultipleChoiceQuestion :questionObject="question" />
         <template #fallback> Generating a practice question... </template>
       </Suspense>
     </div>
+    <button @click="generateQuestion">Generate Question</button>
   </div>
-  <topic @generateTopic="updateQuestionSpec"></topic>
 </template>
 
 <script setup>
