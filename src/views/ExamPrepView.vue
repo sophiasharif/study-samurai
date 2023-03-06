@@ -3,17 +3,12 @@
     <h1>Exam Prep</h1>
     <test-topics ref="topics"></test-topics>
     <practice-format-input @generate-test="handleGenerate"></practice-format-input>
-    <!--
     <div v-if="isGenerated">
-      <problem-response v-if="isGenerated" :v-for="problem in problems" :description="problem.question"></problem-response>
+      <Suspense>
+        <MultipleChoiceQuestion v-for="problem in practiceExam" :questionObject="problem"/>
+        <template #fallback> Generating practice exam... </template>
+      </Suspense>
     </div>
-    <problem-response :description="'$\\int_a^b f(x), dx$ denotes the integral from $a$ to $b$'" v-if="this.isGenerated" ref="practice"></problem-response>
-    <p v-if="this.isGenerated">Type in your answer: {{ message }}</p>
-    <input v-model="message" v-if="this.isGenerated" placeholder="your input" />
-    <div id="submitButton">
-        <a href="link" class="button" v-if="this.isGenerated">Look up the answer</a>
-      </div>
-    -->
   </div>
   
 
@@ -24,26 +19,44 @@
 import TestTopics from '@/components/TopicSelect.vue'
 import PracticeFormatInput from '@/components/PracticeFormatInput.vue'
 import ProblemResponse from '@/components/ProblemResponse.vue'
-import { getSubtopicsInUnit, getQuestionsBySubtopic } from '@/composables/firebaseFunctions';
+import { getSubtopicsInUnit, getQuestionsByUnit } from '@/composables/firebaseFunctions';
+import MultipleChoiceQuestion from '@/components/MultipleChoiceQuestion.vue';
 
 export default {
   data(){
     return{
       isGenerated: false,
-      problems: getQuestionsBySubtopic("orthogonality")
+      problems: [],
+      problemsGenerated: false,
+      selectedUnits: [1],
+      numProblems: 3,
+      practiceExam: []
     };
   },
   components: {
     TestTopics,
     PracticeFormatInput,
     ProblemResponse,
-  }, methods:{
-    handleGenerate(numProblems, numTime){
-      console.log(numTime + "-minute problem set generated with " + numProblems + " problems");
-      console.log(this.problems);
+    MultipleChoiceQuestion
+}, methods:{
+    async handleGenerate(){
+      this.isGenerated = true;
+      for (let i=0; i<this.selectedUnits.length; i++) {
+        const res = await getQuestionsByUnit(this.selectedUnits[i])
+        this.problems.push(...res)
+      }
+
+      for (let i=0; i<this.numProblems; i++) {
+        const rand = Math.floor(Math.random()*this.problems.length);
+        const q = this.problems.splice(rand, 1)[0]
+        this.practiceExam.push(q)
+      }
+
+      console.log(this.practiceExam)
+
+      this.problemsGenerated = true;
       
       this.$refs.practice;
-      this.isGenerated = true;
     }
   }
 
