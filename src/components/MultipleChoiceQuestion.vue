@@ -15,13 +15,21 @@
     <button @click="checkAnswer">Submit</button>
     <div v-if="isAnswered">
       <p v-if="isCorrect">Correct!</p>
-      <p v-else>Incorrect! The correct answer is {{ correctAnswer }}.</p>
+      <div v-else>
+        <p>Incorrect! The correct answer is {{ correctAnswer }}.</p>
+        <div v-if="explanation">
+            {{ explanation }}
+        </div>
+        <div v-else>
+            generating feedback...
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { generateMultipleIncorrectAnswers } from '@/composables/chatGPTFunctions';
+import { generateMultipleIncorrectAnswers, generateIncorrectAnswerExplanation } from '@/composables/chatGPTFunctions';
 
 export default {
   props: ["questionObject"],
@@ -37,7 +45,7 @@ export default {
       userAnswer: "",
       isAnswered: false,
       isCorrect: false,
-    //   incorrectAnswers: ["Madrid", "Berlin", "London"],
+      explanation: null
     };
   },
   computed: {
@@ -50,6 +58,12 @@ export default {
     checkAnswer() {
       this.isAnswered = true;
       this.isCorrect = this.userAnswer === this.correctAnswer;
+      if (!this.isCorrect) {
+        generateIncorrectAnswerExplanation(this.question, this.correctAnswer, this.userAnswer).then(res => {
+            console.log(res)
+            this.explanation = res;
+        })
+      }
     },
   },
 };
