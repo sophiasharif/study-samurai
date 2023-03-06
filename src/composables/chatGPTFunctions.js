@@ -43,4 +43,35 @@ async function generateMultipleIncorrectAnswers(question, correctAnswer, numAnsw
     return res;
 }
 
-export {generateCorrectAnswer, generateCorrectAnswerExplanation, generateIncorrectAnswer, generateMultipleIncorrectAnswers}
+async function generateIncorrectAnswerExplanation(question, correctAnswer, incorrectAnswer) {
+    const prompt = `I'm struggling with solving the following question: ${question}.
+                    The correct answer to this question is ${correctAnswer}.
+                    However, I'm getting the answer ${incorrectAnswer}.
+                    Where am I going wrong? Write an explanation in a very friendly tone explaining how I made the mistake.
+                    Format any math expressions you use with LaTeX.`
+    const res = await generateChatGPTResponse(prompt);
+    return res;
+}
+
+async function generateIncorrectAnswerSet(question, correctAnswer, numIncorrectAnswers) {
+    const incorrectAnswers = await generateMultipleIncorrectAnswers(question, correctAnswer, numIncorrectAnswers);
+    let res = [];
+    for (let i=0; i<numIncorrectAnswers; i++) {
+        const ans = incorrectAnswers[i];
+        const exp = await generateIncorrectAnswerExplanation(question, correctAnswer, ans);
+        res.push({
+            incorrectAnswer: ans,
+            explanation: exp
+        })
+    }
+    return res
+}
+
+export {
+    generateCorrectAnswer, 
+    generateCorrectAnswerExplanation, 
+    generateIncorrectAnswer, 
+    generateMultipleIncorrectAnswers,
+    generateIncorrectAnswerExplanation,
+    generateIncorrectAnswerSet
+}
