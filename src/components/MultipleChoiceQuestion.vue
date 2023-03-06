@@ -31,13 +31,13 @@
 
 <script>
 import { generateMultipleIncorrectAnswers, generateIncorrectAnswerExplanation } from '@/composables/chatGPTFunctions';
+import { getQuestionsByUnit, getUnits } from '@/composables/firebaseFunctions';
 import ProblemResponse from './ProblemResponse.vue';
 
 export default {
   props: ["questionObject"],
   async setup(props) {
     const incorrectAnswers = await generateMultipleIncorrectAnswers(props.questionObject.question, props.questionObject.answer, 3)
-    console.log(incorrectAnswers);
     return { incorrectAnswers };
   },
   data() {

@@ -68,7 +68,7 @@
   form {
     display: grid;
     place-items: center;
-    margin: 60px;
+    margin: 70px;
   }
 
   .radio-choices {
@@ -77,7 +77,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin: 20px 30px 25px 30px;
+    margin: 20px 30px 10px 30px;
   }
 
   label {
