@@ -19,11 +19,6 @@
           <span class="selection"></span>
           prep for my exam
         </label>
-        <label>
-          <input @click="setLink('/check-work')" type="radio" id="work" name="choice" value="checkWork">
-          <span class="selection"></span>
-          check my work
-        </label>
       </div>
       <div id="submitButton">
         <a :href="link" class="button">GO!</a>

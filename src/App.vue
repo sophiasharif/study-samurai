@@ -11,7 +11,6 @@
       <router-link to="/">home</router-link>
       <router-link to="/exam-prep">exam prep</router-link>
       <router-link to="/topic-practice">topic practice</router-link>
-      <router-link to="/check-work">check work</router-link>
       <router-link to="/login" class="button">LOGIN</router-link>
     </div>
 </nav>
