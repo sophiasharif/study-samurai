@@ -5,11 +5,6 @@
       alt=""
     />
     <h1>EL STUDY SAMUR.AI</h1>
-    <div>
-      <h2>Calculus Problem:</h2>
-      <p>{{ problem }}</p>
-      <button @click="test">Generate New Problem</button>
-    </div>
   </div>
 </template>
 

@@ -8,8 +8,16 @@
       <problem-response v-if="isGenerated" :v-for="problem in problems" :description="problem.question"></problem-response>
     </div>
     <problem-response :description="'$\\int_a^b f(x), dx$ denotes the integral from $a$ to $b$'" v-if="this.isGenerated" ref="practice"></problem-response>
+    <p v-if="this.isGenerated">Type in your answer: {{ message }}</p>
+    <input v-model="message" v-if="this.isGenerated" placeholder="your input" />
+    <div id="submitButton">
+        <a href="link" class="button" v-if="this.isGenerated">Look up the answer</a>
+      </div>
     -->
   </div>
+  
+
+
 </template>
 
 <script>
@@ -84,6 +92,8 @@ export default {
   background-color: #2f1a5d;
 }
 
-
+#submitButton {
+  margin: 20px;
+}
 
 </style>

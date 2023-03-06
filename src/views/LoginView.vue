@@ -8,11 +8,11 @@
         <div class="title">Study Samurai</div>
         <input class="username" type="text" v-model="username" placeholder="input username" />
         <input class="password" type="text" v-model="password" placeholder="input password" />
-
         <div class="bottom">
           <span class="clear"></span>
-          <button @click="login()">Login</button>
-          <button @click="jumpRegister()">Register</button>
+          <div id="submitButton">
+            <a href="#">Register</a>
+          </div>
         </div>
       </div>
     </div>
@@ -65,4 +65,5 @@
 </script>
 
 <style>
+
 </style>
