@@ -2,6 +2,10 @@ import { db } from "../firebase/config";
 import { collection, getDocs, where, query } from "firebase/firestore";
 
 // returns an array of objects
+
+//.title
+//.unit
+//.subtopics an array
 async function getUnits() {
   const col = collection(db, "textbookSections");
   let docs = [];
@@ -9,6 +13,7 @@ async function getUnits() {
   snapshot.docs.forEach((doc) => {
     docs.push({ ...doc.data(), id: doc.id });
   });
+  console.log(docs[0]);
   return docs;
 }
 

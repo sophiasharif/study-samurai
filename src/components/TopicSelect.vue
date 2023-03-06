@@ -20,6 +20,8 @@
 </template>
   
   <script>
+  import {getUnits} from "@/composables/firebaseFunctions"
+
   export default {
     data() {
       return {
@@ -55,6 +57,8 @@
       getSelectedTopics(){
         return this.selectedTopics;
       }
+    },mounted(){
+      getUnits();
     }
   }
   </script>
