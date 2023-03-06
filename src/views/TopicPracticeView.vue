@@ -2,13 +2,13 @@
   <div>
     <h1>Topic Practice</h1>
     <topic @generateTopic="updateQuestionSpec"></topic>
+    <button @click="generateQuestion">Generate Question</button>
     <div v-if="questionLoaded">
       <Suspense>
         <MultipleChoiceQuestion :questionObject="question" />
         <template #fallback> Generating a practice question... </template>
       </Suspense>
     </div>
-    <button @click="generateQuestion">Generate Question</button>
   </div>
 </template>
 
