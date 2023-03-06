@@ -1,13 +1,5 @@
 <template>
-  <div>
-      We can define the integral of a function with bounded support:
-      <math-jax latex="\frac{x^2}{a^2}-\frac{y^2}{b^2}=1"></math-jax>
-      <p>Here's a block of LaTeX:</p>
-      <div>
-        <math-jax :latex=formula :block="true"></math-jax>
-      </div>
-  </div>
-  <div border-style="solid">
+  <div class="mathDisplay">
     <template v-for="(item,index) in this.textArray">
       <span>{{ item }}</span>
       <math-jax :latex="equationsArray[index]"></math-jax>
@@ -53,3 +45,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.mathDisplay{
+  display:inline-block;
+}
+</style>

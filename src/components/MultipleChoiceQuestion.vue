@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ question }}</h2>
+    <ProblemResponse :description="question"></ProblemResponse>
     <ul>
       <li v-for="(answer, index) in answers" :key="index">
         <input
@@ -9,7 +9,8 @@
           :value="answer"
           v-model="userAnswer"
         />
-        <label :for="'answer-' + index">{{ answer }}</label>
+        <ProblemResponse :for="'answer-' + index" :description="answer"></ProblemResponse>
+        <!--<label :for="'answer-' + index">{{ answer }}</label>-->
       </li>
     </ul>
     <button @click="checkAnswer">Submit</button>
@@ -30,6 +31,7 @@
 
 <script>
 import { generateMultipleIncorrectAnswers, generateIncorrectAnswerExplanation } from '@/composables/chatGPTFunctions';
+import ProblemResponse from './ProblemResponse.vue';
 
 export default {
   props: ["questionObject"],
@@ -65,7 +67,9 @@ export default {
         })
       }
     },
-  },
+  },components:{
+    ProblemResponse
+  }
 };
 </script>
 
