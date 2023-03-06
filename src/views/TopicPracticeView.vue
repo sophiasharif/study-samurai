@@ -1,21 +1,7 @@
 <template>
   <div>
     <h1>Topic Practice</h1>
-    <!--
-    <select name="Topics" id="button">
-      <option value="">-- Select a Topic --</option>
-      <option
-        v-for="topic in topic"
-        :key="topic.id"
-        class="topics"
-        :value="topic.name"
-      >
-        {{ topic.name }}
-      </option>
-    
-      <option value="custom">Custom</option>
-    </select>
-    -->
+    <topic @generateTopic="updateQuestionSpec"></topic>
     <button @click="generateQuestion">Generate Question</button>
     <div v-if="questionLoaded">
       <Suspense>
@@ -24,7 +10,6 @@
       </Suspense>
     </div>
   </div>
-  <topic @generateTopic="updateQuestionSpec"></topic>
 </template>
 
 <script setup>
