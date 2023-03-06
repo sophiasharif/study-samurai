@@ -1,18 +1,15 @@
 <template>
   <div>
-    <h1>Exam Prep</h1>
+    <h1>exam prep</h1>
     <test-topics @generate-topics="updateTopics"></test-topics>
     <practice-format-input @generate-test="handleGenerate"></practice-format-input>
     <div v-if="isGenerated">
       <Suspense>
         <MultipleChoiceQuestion v-for="problem in practiceExam" :questionObject="problem"/>
-        <template #fallback> Generating practice exam... </template>
+        <template #fallback> generating practice exam... </template>
       </Suspense>
     </div>
   </div>
-  
-
-
 </template>
 
 <script>
@@ -110,7 +107,7 @@ export default {
 }
 
 #submitButton {
-  margin: 20px;
+  margin: 10px;
 }
 
 </style>

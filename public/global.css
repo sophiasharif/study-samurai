@@ -14,10 +14,11 @@ body {
   font-weight: bold;
   overflow-x: hidden;
 }
+
 .content {
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
+  width: 800px;
 }
 
 h1 {

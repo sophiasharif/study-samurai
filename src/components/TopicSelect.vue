@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div id="dropdown-div">
     <label for="section-dropdown">Section:</label>
     <select id="section-dropdown" v-model="latestSection" @change="updateAll">
       <option value="">Select a section</option>
       <option v-for="section in sections" :value="section">{{ section }}</option>
     </select>
   </div>
-  <div v-if="selectedSections.length > 0">
-      <div v-for="selectedTopic in selectedSections" :key="selectedTopic.id" class="selected-topic">
-        {{ selectedTopic }}
-        <button @click="removeSelectedTopic(selectedTopic)">Remove</button>
-      </div>
+  <div id="remove-div" v-if="selectedSections.length > 0">
+    <div v-for="selectedTopic in selectedSections" :key="selectedTopic.id" class="selected-topic">
+      {{ selectedTopic }}
+      <button id="remove-button" @click="removeSelectedTopic(selectedTopic)">Remove</button>
     </div>
+  </div>
 </template>
 
 <script>
@@ -58,3 +58,21 @@ export default {
   },emits: ['generateTopics']
 };
 </script>
+
+<style scoped>
+  #dropdown-div {
+    padding: 5px;
+  }
+
+  #remove-div {
+    padding: 5px;
+  }
+
+  label {
+    margin: 20px;
+  }
+
+  #remove-button {
+    margin: 0px 10px;
+  }
+</style>

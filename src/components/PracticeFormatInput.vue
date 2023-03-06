@@ -1,13 +1,17 @@
 <template>
-    <div align-items="center" class="test-format">
-        <input type="text" ref="prob" v-model="numProblems" @input="updateValue" @click="selectAll">
-        <button @click="increment">+</button>
-        <button @click="decrement">-</button>
-        <input type="text" ref="time" v-model="numTime" @input="updateTime" @click="selectTime">
-        <button @click="incrementTime">+</button>
-        <button @click="decrementTime">-</button>
-        <button ref="generateButton" @click="$emit('generate-test',this.getNumProblem(), this.getNumTime())">Generate</button>
+  <div align-items="center" class="test-format">
+    <div class="increment-div">
+      <input type="text" ref="prob" v-model="numProblems" @input="updateValue" @click="selectAll">
+      <button @click="increment">+</button>
+      <button @click="decrement">-</button>
     </div>
+    <div class="increment-div">
+      <input type="text" ref="time" v-model="numTime" @input="updateTime" @click="selectTime">
+      <button @click="incrementTime">+</button>
+      <button @click="decrementTime">-</button>
+    </div>
+    <button id="generate-button" ref="generateButton" class="button" @click="$emit('generate-test',this.getNumProblem(), this.getNumTime())">GENERATE</button>
+  </div>
 </template>
 
 <script>
@@ -65,7 +69,15 @@ export default{
 </script>
 
 <style scoped>
-.test-format{
-    margin : 20px;
-}
+  .test-format{
+      margin : 20px;
+  }
+
+  .increment-div {
+    padding: 5px;
+  }
+
+  #generate-button {
+    margin: 10px;
+  }
 </style>

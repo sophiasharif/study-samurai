@@ -5,7 +5,7 @@
       <topic @generateTopic="updateQuestionSpec"></topic>
       <button @click="generateQuestion" class="button">GENERATE</button>
     </div>
-    <div v-if="questionLoaded">
+    <div id="problem-div" v-if="questionLoaded">
       <Suspense>
         <MultipleChoiceQuestion :questionObject="question" />
         <template #fallback> generating a practice question... </template>
@@ -54,6 +54,9 @@ function updateQuestionSpec(unitNumber, selectedSubtopic) {
 
   #dropdown-div {
     display: inline;
-    padding: 20px;
+  }
+
+  #problem-div {
+    margin: 30px;
   }
 </style>
