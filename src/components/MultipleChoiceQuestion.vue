@@ -17,9 +17,9 @@
     <div v-if="isAnswered">
       <p v-if="isCorrect">Correct!</p>
       <div v-else>
-        <p>Incorrect! The correct answer is {{ correctAnswer }}.</p>
+        <p>Incorrect! The correct answer is <ProblemResponse :description="correctAnswer"></ProblemResponse>.</p>
         <div v-if="explanation">
-            {{ explanation }}
+            <ProblemResponse :description="explanation"/>
         </div>
         <div v-else>
             generating feedback...
