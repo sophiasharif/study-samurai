@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Exam Prep</h1>
-    <test-topics ref="topics"></test-topics>
+    <test-topics @generate-topics="updateTopics"></test-topics>
     <practice-format-input @generate-test="handleGenerate"></practice-format-input>
     <div v-if="isGenerated">
       <Suspense>
@@ -57,6 +57,10 @@ export default {
       this.problemsGenerated = true;
       
       this.$refs.practice;
+      this.isGenerated = true;
+    },
+    updateTopics(selectedUnits){
+      this.selectedUnits = selectedUnits;
     }
   }
 

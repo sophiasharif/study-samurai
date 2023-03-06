@@ -11,7 +11,8 @@ async function generateCorrectAnswerExplanation(question, correctAnswer) {
     const prompt = `I'm struggling with solving the following question: ${question}.
                     The correct answer to this question is ${correctAnswer}.
                     Could you explain how to reach this correct answer in a friendly tone
-                    Format any math expressions you use with LaTeX.`
+                    Format any math expressions you use with LaTeX. Use only single dollar signs
+                    to delimit your math expressions.`
     const res = await generateChatGPTResponse(prompt);
     return res;
 }
