@@ -5,12 +5,19 @@
 }
 
 body {
+  display: grid;
+  grid-template: 1fr / 1fr;
   background-color: var(--mediumPurple);
   color: white;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0px 50px;
   font-weight: bold;
   overflow: hidden;
+}
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
 }
 
 h1 {
@@ -45,4 +52,34 @@ h2 {
 a {
   text-decoration: none;
   color: white;
+}
+
+.multiple-choice-form {
+  display: grid;
+  place-items: center;
+  margin: 30px;
+}
+
+.radio-choices {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px 30px 10px 30px;
+}
+
+.radio-choices label {
+  display: flex;
+  align-items: center;
+  color: var(--lightPurple);
+}
+
+.radio-choices label input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  border: 10px var(--lightPurple);
+  background-color: var(--lightPurple);
+  margin: 7px 10px;
 }

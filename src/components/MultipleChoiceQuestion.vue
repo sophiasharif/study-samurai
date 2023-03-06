@@ -1,19 +1,22 @@
 <template>
-  <div>
-    <ProblemResponse :description="question"></ProblemResponse>
-    <ul>
-      <li v-for="(answer, index) in answers" :key="index">
-        <input
-          type="radio"
-          :id="'answer-' + index"
-          :value="answer"
-          v-model="userAnswer"
-        />
-        <ProblemResponse :for="'answer-' + index" :description="answer"></ProblemResponse>
-        <!--<label :for="'answer-' + index">{{ answer }}</label>-->
-      </li>
-    </ul>
-    <button @click="checkAnswer">Submit</button>
+  <div class="content">
+    <form class="multiple-choice-form">
+      <ProblemResponse :description="question"></ProblemResponse>
+      <div class="radio-choices">
+        <label v-for="(answer, index) in answers" :key="index">
+          <input type="radio"
+                 :id="'answer-' + index"
+                 :value="answer"
+                 v-model="userAnswer" />
+          <span class="selection"></span>
+          <ProblemResponse :for="'answer-' + index" :description="answer"></ProblemResponse>
+          <!--<label :for="'answer-' + index">{{ answer }}</label>-->
+        </label>
+      </div>
+      <div id="submitButton">
+        <input type="submit" @click="checkAnswer" class="button" value="SUBMIT">
+      </div>
+    </form>
     <div v-if="isAnswered">
       <p v-if="isCorrect">Correct!</p>
       <div v-else>
@@ -67,10 +70,11 @@ export default {
         })
       }
     },
-  },components:{
-    ProblemResponse
-  }
-};
+    },
+    components: {
+      ProblemResponse
+    }
+  };
 </script>
 
 <style scoped>
