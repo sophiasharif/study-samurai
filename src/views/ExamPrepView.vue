@@ -1,9 +1,14 @@
 <template>
   <div>
     <h1>Exam Prep</h1>
-    <test-topics></test-topics>
+    <test-topics ref="topics"></test-topics>
     <practice-format-input @generate-test="handleGenerate"></practice-format-input>
+    <!--
+    <div v-if="isGenerated">
+      <problem-response v-if="isGenerated" :v-for="problem in problems" :description="problem.question"></problem-response>
+    </div>
     <problem-response :description="'$\\int_a^b f(x), dx$ denotes the integral from $a$ to $b$'" v-if="this.isGenerated" ref="practice"></problem-response>
+    -->
   </div>
 </template>
 
@@ -11,11 +16,13 @@
 import TestTopics from '@/components/TopicSelect.vue'
 import PracticeFormatInput from '@/components/PracticeFormatInput.vue'
 import ProblemResponse from '@/components/ProblemResponse.vue'
+import { getSubtopicsInUnit, getQuestionsBySubtopic } from '@/composables/firebaseFunctions';
 
 export default {
   data(){
     return{
-      isGenerated: false
+      isGenerated: false,
+      problems: getQuestionsBySubtopic("orthogonality")
     };
   },
   components: {
@@ -24,7 +31,9 @@ export default {
     ProblemResponse,
   }, methods:{
     handleGenerate(numProblems, numTime){
-      console.log(numTime + "-minute problem set generated with" + numProblems + " problems");
+      console.log(numTime + "-minute problem set generated with " + numProblems + " problems");
+      console.log(this.problems);
+      
       this.$refs.practice;
       this.isGenerated = true;
     }
