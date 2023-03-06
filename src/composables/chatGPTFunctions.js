@@ -17,10 +17,11 @@ async function generateCorrectAnswerExplanation(question, correctAnswer) {
 }
 
 async function generateIncorrectAnswer(question, correctAnswer, incorrectAnswers=[]) {
-    let prompt = `Generate a convincing incorrect answer to the following question: Text:{${question}}.
-                The correct answer to this question is ${correctAnswer}, so do not give it as an incorrect answer.
-                Format math expressions with LaTeX.
-                No further explanation is necessary; just the incorrect answer is sufficient.`
+    let prompt = `Generate a convincing incorrect answer to the following math question: Text:{${question}}.
+                The correct answer to this question is ${correctAnswer}. Do not give it as an incorrect answer,
+                and structure your answer like the correct answer.
+                Format your answer as a single expression, do not end with punctuation.
+                Write numbers and math statements with LaTeX. Do not explain the incorrect answer.`
     
     if (incorrectAnswers.length > 0) {
         prompt +=  " Incorrect answers that I have already thoughts of are "

@@ -95,31 +95,31 @@
   }
 
   #smallBlob {
-    left: 300px;
-    top: 260px;
+    left: 450px;
+    top: 80px;
     width: 45px;
     height: 50px;
     animation: animateCCW 12s linear infinite;
   }
 
   #mediumBlob {
-    left: 57%;
-    top: 170px;
+    left: 1050px;
+    top: 190px;
     width: 150px;
     height: 180px;
     animation: animateCW 16s linear infinite;
   }
 
   #largeBlob1 {
-    left: -50px;
-    top: 550px;
+    left: -100px;
+    top: 500px;
     width: 500px;
     height: 400px;
     animation: animateCW 10s linear infinite;
   }
 
   #largeBlob2 {
-    left: 1050px;
+    left: 950px;
     top: 690px;
     width: 600px;
     height: 500px;
