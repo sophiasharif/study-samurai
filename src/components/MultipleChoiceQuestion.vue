@@ -13,15 +13,15 @@
           <!--<label :for="'answer-' + index">{{ answer }}</label>-->
         </label>
       </div>
-      <div id="submitButton">
-        <input type="submit" @click="checkAnswer" class="button" value="SUBMIT">
+      <div id="submitButton" @click="checkAnswer" class="button">
+        SUBMIT
       </div>
     </form>
     <div v-if="isAnswered">
       <p v-if="isCorrect">Correct!</p>
       <div v-else>
         <p>Incorrect! The correct answer is <ProblemResponse :description="correctAnswer"></ProblemResponse>.</p>
-        <div v-if="explanation">
+        <div v-if="explanation" class="explanation">
             <ProblemResponse :description="explanation"/>
         </div>
         <div v-else>
@@ -79,4 +79,9 @@ export default {
 
 <style scoped>
 /* add any necessary CSS styles here */
+.explanation {
+    background: rgba(53,28,117, .8);
+    padding: 1.25rem;
+    border-radius: 1rem;
+}
 </style>

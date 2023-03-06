@@ -12,7 +12,7 @@ body {
   justify-content: space-between;
   padding: 0px 50px;
   font-weight: bold;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .content {
   margin-left: auto;
