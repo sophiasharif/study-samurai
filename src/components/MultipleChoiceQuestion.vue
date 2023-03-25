@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div align-items="center">
     <form class="multiple-choice-form">
       <ProblemResponse :description="question"></ProblemResponse>
       <div class="radio-choices">

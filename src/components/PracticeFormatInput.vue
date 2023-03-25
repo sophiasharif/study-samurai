@@ -18,26 +18,26 @@
 export default{
     data(){
         return{
-            numProblems: '5 Problems',
-            defaultNumProblems: '5 Problems',
-            numTime: '45 Minutes',
-            defaultTime: '45 Minutes'
+            numProblems: '5 problems',
+            defaultNumProblems: '5 problems',
+            numTime: '45 minutes',
+            defaultTime: '45 minutes'
         };
     },
     methods: {
         increment(){
-            this.numProblems = (this.getNumProblem()+1) + ' Problems';
+            this.numProblems = (this.getNumProblem()+1) + ' problems';
         },
         decrement(){
-            this.numProblems = (Math.max(1, this.getNumProblem() - 1)) + ' Problems';
+            this.numProblems = (Math.max(1, this.getNumProblem() - 1)) + ' problems';
         },updateValue(event) {
             const input = event.target.value;
             if (isNaN(input)) {
                 this.numProblems = this.defaultNumProblems;
             }else if(input != '' && input < 1){
-                this.numProblems = 1 + ' Problems';
+                this.numProblems = 1 + ' problems';
             }else{
-                this.numProblems = input + ' Problems';
+                this.numProblems = input + ' problems';
             }
         },selectAll() {
             this.$refs.prob.select();
@@ -48,18 +48,18 @@ export default{
             return parseInt(this.numProblems.split(' ').at(0));
         },
         incrementTime(){
-            this.numTime = (parseInt(this.getNumTime() + 15) + ' Minutes');
+            this.numTime = (parseInt(this.getNumTime() + 15) + ' minutes');
         },
         decrementTime(){
-            this.numTime = (Math.max(15, this.getNumTime() - 15)) + ' Minutes';
+            this.numTime = (Math.max(15, this.getNumTime() - 15)) + ' minutes';
         },updateTime(event) {
             const input = event.target.value;
             if (isNaN(input)) {
                 this.numTime = this.decrementTime;
             }else if(input != '' && input < 1){
-                this.numTime = 1 + ' Minutes';
+                this.numTime = 1 + ' minutes';
             }else{
-                this.numTime = input + ' Minutes';
+                this.numTime = input + ' minutes';
             }
         },selectTime() {
             this.$refs.time.select();

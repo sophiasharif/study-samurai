@@ -81,6 +81,7 @@
     background-color: white;
     border-radius: 10px;
     z-index: -1;
+    position: fixed;
   }
 
   @keyframes animateCW {
@@ -94,32 +95,32 @@
   }
 
   #smallBlob {
-    left: 450px;
-    top: 80px;
+    left: 35%;
+    top: 15%;
     width: 45px;
     height: 50px;
     animation: animateCCW 12s linear infinite;
   }
 
   #mediumBlob {
-    left: 1060px;
-    top: 200px;
+    left: 75%;
+    top: 35%;
     width: 150px;
     height: 180px;
     animation: animateCW 16s linear infinite;
   }
 
   #largeBlob1 {
-    left: -100px;
-    top: 500px;
+    left: -10%;
+    top: 70%;
     width: 500px;
     height: 400px;
     animation: animateCW 10s linear infinite;
   }
 
   #largeBlob2 {
-    left: 900px;
-    top: 690px;
+    left: 70%;
+    top: 95%;
     width: 600px;
     height: 500px;
     animation: animateCCW 12s linear infinite;

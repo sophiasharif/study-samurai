@@ -4,7 +4,7 @@
     <div>
       <div class="bg"></div>
       <!--<div class="bg-shade"></div>-->
-      <div class="content">
+      <div align-items="center">
         <div class="title">Study Samurai</div>
         <input class="username" type="text" v-model="username" placeholder="input username" />
         <input class="password" type="text" v-model="password" placeholder="input password" />

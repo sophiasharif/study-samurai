@@ -1,6 +1,6 @@
 <template>
   <div id="dropdown-div">
-    <label for="section-dropdown">Section:</label>
+    <label for="section-dropdown">section:</label>
     <select id="section-dropdown" v-model="latestSection" @change="updateAll">
       <option value="">Select a section</option>
       <option v-for="section in sections" :value="section">{{ section }}</option>

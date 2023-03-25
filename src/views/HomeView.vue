@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div align-items="center">
     <div class="title">
       <div id="welcome">
         <h1>hello hello,</h1>
